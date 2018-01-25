@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登陆-cms</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+<div class="container ">
+    <div class="row my-style">
+        <div class="col-md-4 col-md-offset-5">
+            <p class="title">登陆——let's funking the bug</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <!-- form 表单 -->
+            <form class="form-horizontal" novalidate method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username" class="col-sm-4 control-label text-justify">用户名</label>
+                    <div class="col-sm-8">
+                        {{ form.username }}
+                        <span id="username" class="help-block my-display"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_password" class="col-sm-4 control-label text-justify">密码</label>
+                    <div class="col-sm-8">
+                        {{ form.password }}
+                        <span id="password" class="help-block"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                {{ form.auto_login }} 下次自动登录
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-8 col-md-offset-5">
+                <button id="login-btn" class="btn btn-default" style="font-weight: bold;color: #904">登陆</button>
+                <a id="register" href="{% url 'register' %}" style="color: #990044; font-weight: bold">&nbsp;&nbsp;&nbsp;&nbsp;还没账号？点我注册</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
